@@ -1,5 +1,5 @@
 export default {
-  blockchain: 'Blockchain',
+  blockchain: '',
   nodes: 'Nodes',
   releases: 'Releases',
   glossary: 'Glossary',
