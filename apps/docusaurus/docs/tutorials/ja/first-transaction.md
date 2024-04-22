@@ -6,13 +6,13 @@ slug: your-first-transaction
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Your First Transaction
+# 初めてのトランザクション
 
-This tutorial describes how to generate and submit transactions to the Aptos blockchain, and verify these submitted transactions. The `transfer-coin` example used in this tutorial is built with the Aptos SDKs.
+このチュートリアルでは、Aptosブロックチェーンにトランザクションを生成して送信し、これらの送信されたトランザクションを検証する方法について説明します。 このチュートリアルで使用される `transfer-coin` の例は、Aptos SDK を使用して構築されています。
 
-## Step 1: Pick an SDK
+## ステップ 1: SDKを選択
 
-Install your preferred SDK from the below list:
+以下のリストからご希望の SDK をインストールします。
 
 - [TypeScript SDK](../sdks/ts-sdk/index.md)
 - [Python SDK](../sdks/python-sdk.md)
@@ -20,31 +20,31 @@ Install your preferred SDK from the below list:
 
 ***
 
-## Step 2: Run the example
+## ステップ 2: サンプルを実行
 
 <Tabs groupId="sdk-examples">
   <TabItem value="typescript" label="Typescript">
 
-Clone the `@aptos-labs/ts-sdk` repo:
+`@aptos-labs/ts-sdk` リポジトリをクローンします。
 
 ```bash
 git clone https://github.com/aptos-labs/aptos-ts-sdk.git
 ```
 
-Navigate to the Typescript SDK examples directory:
+Typescript SDK examples ディレクトリに移動します。
 
 ```bash
 cd aptos-ts-sdk/examples/typescript
 ```
 
-Install the necessary dependencies:
+必要な依存関係をインストールします。
 
 ```bash
 pnpm install
 pnpm build
 ```
 
-Run the [`transfer_coin`](https://github.com/aptos-labs/aptos-ts-sdk/blob/main/examples/typescript/transfer_coin.ts) example:
+[`transfer_coin`](https://github.com/aptos-labs/aptos-ts-sdk/blob/main/examples/typescript/transfer_coin.ts)サンプルを実行します。
 
 ```bash
 pnpm run transfer_coin
@@ -53,26 +53,26 @@ pnpm run transfer_coin
   
   <TabItem value="python" label="Python">
 
-Clone the `aptos-core` repo:
+`aptos-core` リポジトリをクローンします。
 
 ```bash
 git clone https://github.com/aptos-labs/aptos-core.git
 ```
 
-Navigate to the Python SDK directory:
+Python SDK ディレクトリに移動します。
 
 ```bash
 cd aptos-core/ecosystem/python/sdk
 ```
 
-Install the necessary dependencies:
+必要な依存関係をインストールします。
 
 ```bash
 curl -sSL https://install.python-poetry.org | python3
 poetry install
 ```
 
-Run the [`transfer-coin`](https://github.com/aptos-labs/aptos-core/blob/main/ecosystem/python/sdk/examples/transfer_coin.py) example:
+[`transfer_coin`](https://github.com/aptos-labs/aptos-core/blob/main/ecosystem/python/sdk/examples/transfer_coin.py)サンプルを実行します。
 
 ```bash
 poetry run python -m examples.transfer_coin
@@ -81,19 +81,19 @@ poetry run python -m examples.transfer_coin
   
   <TabItem value="rust" label="Rust">
 
-Clone the `aptos-core` repo:
+`aptos-core` リポジトリをクローンします。
 
 ```bash
 git clone https://github.com/aptos-labs/aptos-core.git
 ```
 
-Navigate to the Rust SDK directory:
+Rust SDK ディレクトリに移動します。
 
 ```bash
 cd aptos-core/sdk
 ```
 
-Run the [`transfer-coin`](https://github.com/aptos-labs/aptos-core/blob/main/sdk/examples/transfer-coin.rs) example:
+[`transfer_coin`](https://github.com/aptos-labs/aptos-core/blob/main/sdk/examples/transfer-coin.rs)サンプルを実行します。
 
 ```bash
 cargo run --example transfer-coin
@@ -104,11 +104,11 @@ cargo run --example transfer-coin
 
 ***
 
-## Step 3: Understand the output
+## ステップ3：出力を理解する
 
 <Tabs groupId="sdk-examples">
   <TabItem value="typescript" label="Typescript">
-    An output very similar to the following will appear after executing the above command:
+    上記コマンドを実行すると、以下のような出力が表示されます。
 
 ```yaml
 === Addresses ===
@@ -131,18 +131,18 @@ Alice's balance is: 98899100
 Bob's balance is: 1000000
 ```
 
-The above output demonstrates that the `transfer-coin` example executes the following steps:
+上記の出力は、`transfer-coin`サンプルが次のステップを実行することを示しています。
 
-- Initializing the Aptos client.
-- The creation of two accounts: Alice and Bob.
-- The funding and creation of Alice's account from a faucet.
-- The transferring of 1000000 coins from Alice to Bob.
-- The 1100900 coins of gas paid for by Alice to make that transfer.
+- Aptos クライアントの初期化
+- Alice と Bob の2つのアカウントの作成
+- ファウセットからの Alice のアカウントへの資金の供給
+- Alice から Bob への1,000,000コインの転送
+- その転送により Alice がガス代1,100,900コインを負担
 
 </TabItem>
 
   <TabItem value="python" label="Python">
-    An output very similar to the following will appear after executing the above command:
+    上記コマンドを実行すると、以下のような出力が表示されます。
 
 ```yaml
 === Addresses ===
@@ -162,21 +162,21 @@ Alice: 99889800
 Bob: 2000
 ```
 
-The above output demonstrates that the `transfer-coin` example executes the following steps:
+上記の出力は、`transfer-coin`サンプルが次のステップを実行することを示しています。
 
-- Initializing the REST and faucet clients.
-- The creation of two accounts: Alice and Bob.
-- The funding and creation of Alice's account from a faucet.
-- The creation of Bob's account from a faucet.
-- The transferring of 1000 coins from Alice to Bob.
-- The 54100 coins of gas paid for by Alice to make that transfer.
-- Another transfer of 1000 coins from Alice to Bob.
-- The additional 54100 coins of gas paid for by Alice to make that transfer.
+- RESTとファウセットクライアントの初期化
+- Alice と Bob の2つのアカウントの作成
+- ファウセットからの Alice のアカウントへの資金の供給
+- ファウセットからBob のアカウントを作成
+- Alice から Bob へ1,000コインの転送
+- その転送を行うために Alice が支払ったガス代54,100コイン
+- Alice から Bob へもう1,000コインを転送
+- その転送により Alice が追加のガス代54,100コインを負担
 
-Now see the below walkthrough of the SDK functions used to accomplish the above steps. </TabItem>
+上記の手順を達成するために使用されるSDK機能の以下の手順をご覧ください。 </TabItem>
 
   <TabItem value="rust" label="Rust">
-    An output very similar to the following will appear after executing the above command:
+    上記コマンドを実行すると、以下のような出力が表示されます。
 
 ```yaml
 === Addresses ===
@@ -196,18 +196,18 @@ Alice: 99889800
 Bob: 2000
 ```
 
-The above output demonstrates that the `transfer-coin` example executes the following steps:
+上記の出力は、`transfer-coin`サンプルが次のステップを実行することを示しています。
 
-- Initializing the REST and faucet clients.
-- The creation of two accounts: Alice and Bob.
-- The funding and creation of Alice's account from a faucet.
-- The creation of Bob's account from a faucet.
-- The transferring of 1000 coins from Alice to Bob.
-- The 54100 coins of gas paid for by Alice to make that transfer.
-- Another transfer of 1000 coins from Alice to Bob.
-- The additional 54100 coins of gas paid for by Alice to make that transfer.
+- RESTとファウセットクライアントの初期化
+- Alice と Bob の2つのアカウントの作成
+- ファウセットからの Alice のアカウントへの資金の供給
+- ファウセットから Bob のアカウントを作成
+- Alice から Bob へ1,000コインの転送
+- その転送により Alice がガス代54,100コインを負担
+- Alice から Bob へもう1,000コインを転送
+- その転送により Alice が追加のガス代54,100コインを負担
 
-Now see the below walkthrough of the SDK functions used to accomplish the above steps. </TabItem> </Tabs>
+上記の手順を達成するために使用されるSDK機能の以下の手順をご覧ください。 </TabItem> </Tabs>
 
 ***
 
