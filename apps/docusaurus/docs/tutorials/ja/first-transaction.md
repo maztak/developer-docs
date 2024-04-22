@@ -338,9 +338,9 @@ const bob = Account.generate();
 
 ***
 
-### Step 4.3: Creating blockchain accounts
+### ステップ 4.3: ブロックチェーンアカウントの作成
 
-In Aptos, each account must have an on-chain representation in order to receive tokens and coins and interact with other dapps. An account represents a medium for storing assets; hence, it must be explicitly created. This example leverages the Faucet to create and fund Alice's account and to create but not fund Bob's account:
+Aptosでは、各アカウントはトークンとコインを受け取り、他のdappsとやり取りするためにオンチェーン上の表明が必要です。 アカウントは資産を保存するための媒体を表します; したがって、それは明示的に作成する必要があります。 この例では、Faucetを利用してAliceのアカウントを作成・資金を供給し、一方Bobのアカウントは作成のみ行い資金の供給はしません。
 
 <Tabs groupId="sdk-examples">
   <TabItem value="typescript" label="Typescript">
