@@ -1,5 +1,5 @@
 ---
-title: Your First Fungible Asset
+title: 初めてのファンジブル資産
 slug: your-first-fungible-asset
 ---
 
