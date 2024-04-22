@@ -1,5 +1,5 @@
 ---
-title: Aptos Labs Developer Portal
+title: Aptos Labs開発者ポータル
 ---
 
 import BetaNotice from '../../src/components/_dev_portal_beta_notice.mdx';
