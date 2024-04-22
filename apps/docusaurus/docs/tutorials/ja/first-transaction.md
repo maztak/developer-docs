@@ -211,33 +211,33 @@ Bob: 2000
 
 ***
 
-## Step 4: The SDK in depth
+## ステップ 4: SDK の詳細
 
-The `transfer-coin` example code uses helper functions to interact with the [REST API](https://aptos.dev/nodes/aptos-api-spec#/). This section reviews each of the calls and gives insights into functionality.
+`transfer-coin` サンプルのコードはヘルパー関数を使用して [REST API](https://aptos.dev/nodes/aptos-api-spec#/) とやり取りします。 このセクションでは、それぞれの呼び出しをレビューし、機能に関する洞察を提供します。
 
 <Tabs groupId="sdk-examples">
   <TabItem value="typescript" label="Typescript">
 
-:::tip See the full code
-See the TypeScript [`transfer_coin`](https://github.com/aptos-labs/aptos-ts-sdk/blob/main/examples/typescript/transfer_coin.ts) for the complete code as you follow the below steps.
+:::tip 完全なコードを見る
+TypeScript版 [`transfer_coin`](https://github.com/aptos-labs/aptos-ts-sdk/blob/main/examples/typescript/transfer_coin.ts)を参照してください。
 :::
 
-:::tip See the full code
-See the Python [`transfer_coin`](https://github.com/aptos-labs/aptos-core/blob/main/ecosystem/python/sdk/examples/transfer_coin.py) for the complete code as you follow the below steps.
+:::tip 完全なコードを見る
+Python版 [`transfer_coin`](https://github.com/aptos-labs/aptos-core/blob/main/ecosystem/python/sdk/examples/transfer_coin.py)を参照してください。
 :::
 
-:::tip See the full code
-See the Rust [`transfer-coin`](https://github.com/aptos-labs/aptos-core/blob/main/sdk/examples/transfer-coin.rs) for the complete code as you follow the below steps.
+:::tip 完全なコードを見る
+Rust版 [`transfer_coin`](https://github.com/aptos-labs/aptos-core/blob/main/sdk/examples/transfer-coin.rs)を参照してください。
 :::
 
 ***
 
-### Step 4.1: Initializing the clients
+### ステップ 4.1: クライアントの初期化
 
 <Tabs groupId="sdk-examples">
   <TabItem value="typescript" label="Typescript">
 
-In the first step, the `transfer_coin` example initializes the Aptos client:
+まず `transfer_coin`のサンプルでは Aptos クライアントを初期化します。
 
 ```ts
 const APTOS_NETWORK: Network =
@@ -247,15 +247,15 @@ const aptos = new Aptos(config);
 ```
 
 :::tip
-By default, the Aptos client points to Aptos devnet services. However, it can be configured with the `network` input argument
+デフォルトでは、Aptos クライアントは Aptos の devnet サービスを指します。 しかし、これは`network`入力引数でも設定することができます。
 :::
 
   
   <TabItem value="python" label="Python">
-  In the first step, the `transfer-coin` example initializes both the REST and faucet clients:
+  最初のステップでは、 `transfer-coin` サンプルはRESTクライアントとファウセットクライアントの両方を初期化します。
 
-- The REST client interacts with the REST API.
-- The faucet client interacts with the devnet Faucet service for creating and funding accounts.
+- REST クライアントは、REST API とやり取りします。
+- ファウセットクライアントは、アカウントの作成と資金提供のためのdevnet Faucetサービスと相互作用します。
 
 ```python
 :!: static/sdks/python/examples/transfer_coin.py section_1
@@ -269,29 +269,29 @@ By default, the Aptos client points to Aptos devnet services. However, it can be
 
 :::tip
 
-By default, the URLs for both the services point to Aptos devnet services. However, they can be configured with the following environment variables:
+デフォルトでは、両方のサービスの URL は Aptos devnet サービスを指します。 ただし、これらは以下の環境変数で設定できます。
 
 - `APTOS_NODE_URL`
 
 - `APTOS_FAUCET_URL`
   ::: </TabItem> <TabItem value="rust" label="Rust">
-  In the first step, the `transfer-coin` example initializes both the REST and faucet clients:
+  最初のステップでは、 `transfer-coin` サンプルはRESTクライアントとファウセットクライアントの両方を初期化します。
 
-- The REST client interacts with the REST API.
+- REST クライアントは、REST API とやり取りします。
 
-- The faucet client interacts with the devnet Faucet service for creating and funding accounts.
+- ファウセットクライアントは、アカウントの作成と資金提供のための devnet Faucet サービスとやりとりします。
 
 ```rust
 :!: static/sdks/rust/examples/transfer-coin.rs section_1a
 ```
 
-Using the API client we can create a `CoinClient`, which we use for common coin operations such as transferring coins and checking balances.
+API クライアントを使用して、コインの転送や残高の確認などの一般的なコイン操作に使用する `CoinClient` を作成できます。
 
 ```rust
 :!: static/sdks/rust/examples/transfer-coin.rs section_1b
 ```
 
-In the example we initialize the URL values as such:
+この例では、URL の値を以下のように初期化します。
 
 ```rust
 :!: static/sdks/rust/examples/transfer-coin.rs section_1c
@@ -299,7 +299,7 @@ In the example we initialize the URL values as such:
 
 :::tip
 
-By default, the URLs for both the services point to Aptos devnet services. However, they can be configured with the following environment variables:
+デフォルトでは、両方のサービスの URL は Aptos devnet サービスを指します。 ただし、これらは以下の環境変数で設定できます。
 
 - `APTOS_NODE_URL`
 - `APTOS_FAUCET_URL`
@@ -307,7 +307,7 @@ By default, the URLs for both the services point to Aptos devnet services. Howev
 
 ***
 
-### Step 4.2: Creating local accounts
+### ステップ 4.2: ローカルアカウントの作成
 
 The next step is to create two accounts locally. [Accounts](../concepts/accounts.md) represent both on and off-chain state. Off-chain state consists of an address and the public/private key pair used to authenticate ownership. This step demonstrates how to generate that off-chain state.
 
