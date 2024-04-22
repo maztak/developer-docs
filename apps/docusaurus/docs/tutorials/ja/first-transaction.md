@@ -1,114 +1,114 @@
 ---
-title: "初めてのトランザクション"
-slug: "your-first-transaction"
+title: 初めてのトランザクション
+slug: your-first-transaction
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Your First Transaction
+# 初めてのトランザクション
 
-This tutorial describes how to generate and submit transactions to the Aptos blockchain, and verify these submitted transactions. The `transfer-coin` example used in this tutorial is built with the Aptos SDKs.
+このチュートリアルでは、Aptosブロックチェーンにトランザクションを生成して送信し、これらの送信されたトランザクションを検証する方法について説明します。 このチュートリアルで使用される `transfer-coin` の例は、Aptos SDK を使用して構築されています。
 
-## Step 1: Pick an SDK
+## ステップ 1: SDKを選択
 
-Install your preferred SDK from the below list:
+以下のリストからご希望の SDK をインストールします。
 
 - [TypeScript SDK](../sdks/ts-sdk/index.md)
 - [Python SDK](../sdks/python-sdk.md)
 - [Rust SDK](../sdks/rust-sdk.md)
 
----
+***
 
-## Step 2: Run the example
+## ステップ 2: サンプルを実行
 
 <Tabs groupId="sdk-examples">
   <TabItem value="typescript" label="Typescript">
 
-Clone the `@aptos-labs/ts-sdk` repo:
+`@aptos-labs/ts-sdk` リポジトリをクローンします。
 
 ```bash
 git clone https://github.com/aptos-labs/aptos-ts-sdk.git
 ```
 
-Navigate to the Typescript SDK examples directory:
+Typescript SDK examples ディレクトリに移動します。
 
 ```bash
 cd aptos-ts-sdk/examples/typescript
 ```
 
-Install the necessary dependencies:
+必要な依存関係をインストールします。
 
 ```bash
 pnpm install
 pnpm build
 ```
 
-Run the [`transfer_coin`](https://github.com/aptos-labs/aptos-ts-sdk/blob/main/examples/typescript/transfer_coin.ts) example:
+[`transfer_coin`](https://github.com/aptos-labs/aptos-ts-sdk/blob/main/examples/typescript/transfer_coin.ts)サンプルを実行します。
 
 ```bash
 pnpm run transfer_coin
 ```
 
-  </TabItem>
+  
   <TabItem value="python" label="Python">
 
-Clone the `aptos-core` repo:
+`aptos-core` リポジトリをクローンします。
 
 ```bash
 git clone https://github.com/aptos-labs/aptos-core.git
 ```
 
-Navigate to the Python SDK directory:
+Python SDK ディレクトリに移動します。
 
 ```bash
 cd aptos-core/ecosystem/python/sdk
 ```
 
-Install the necessary dependencies:
+必要な依存関係をインストールします。
 
 ```bash
 curl -sSL https://install.python-poetry.org | python3
 poetry install
 ```
 
-Run the [`transfer-coin`](https://github.com/aptos-labs/aptos-core/blob/main/ecosystem/python/sdk/examples/transfer_coin.py) example:
+[`transfer_coin`](https://github.com/aptos-labs/aptos-core/blob/main/ecosystem/python/sdk/examples/transfer_coin.py)サンプルを実行します。
 
 ```bash
 poetry run python -m examples.transfer_coin
 ```
 
-  </TabItem>
+  
   <TabItem value="rust" label="Rust">
 
-Clone the `aptos-core` repo:
+`aptos-core` リポジトリをクローンします。
 
 ```bash
 git clone https://github.com/aptos-labs/aptos-core.git
 ```
 
-Navigate to the Rust SDK directory:
+Rust SDK ディレクトリに移動します。
 
 ```bash
 cd aptos-core/sdk
 ```
 
-Run the [`transfer-coin`](https://github.com/aptos-labs/aptos-core/blob/main/sdk/examples/transfer-coin.rs) example:
+[`transfer_coin`](https://github.com/aptos-labs/aptos-core/blob/main/sdk/examples/transfer-coin.rs)サンプルを実行します。
 
 ```bash
 cargo run --example transfer-coin
 ```
 
-  </TabItem>
-</Tabs>
+  
 
----
 
-## Step 3: Understand the output
+***
+
+## ステップ3：出力を理解する
 
 <Tabs groupId="sdk-examples">
   <TabItem value="typescript" label="Typescript">
-    An output very similar to the following will appear after executing the above command:
+    上記コマンドを実行すると、以下のような出力が表示されます。
 
 ```yaml
 === Addresses ===
@@ -131,18 +131,18 @@ Alice's balance is: 98899100
 Bob's balance is: 1000000
 ```
 
-The above output demonstrates that the `transfer-coin` example executes the following steps:
+上記の出力は、`transfer-coin`サンプルが次のステップを実行することを示しています。
 
-- Initializing the Aptos client.
-- The creation of two accounts: Alice and Bob.
-- The funding and creation of Alice's account from a faucet.
-- The transferring of 1000000 coins from Alice to Bob.
-- The 1100900 coins of gas paid for by Alice to make that transfer.
+- Aptos クライアントの初期化
+- Alice と Bob の2つのアカウントの作成
+- ファウセットからの Alice のアカウントへの資金の供給
+- Alice から Bob への1,000,000コインの転送
+- その転送により Alice がガス代1,100,900コインを負担
 
 </TabItem>
 
   <TabItem value="python" label="Python">
-    An output very similar to the following will appear after executing the above command:
+    上記コマンドを実行すると、以下のような出力が表示されます。
 
 ```yaml
 === Addresses ===
@@ -162,22 +162,21 @@ Alice: 99889800
 Bob: 2000
 ```
 
-The above output demonstrates that the `transfer-coin` example executes the following steps:
+上記の出力は、`transfer-coin`サンプルが次のステップを実行することを示しています。
 
-- Initializing the REST and faucet clients.
-- The creation of two accounts: Alice and Bob.
-- The funding and creation of Alice's account from a faucet.
-- The creation of Bob's account from a faucet.
-- The transferring of 1000 coins from Alice to Bob.
-- The 54100 coins of gas paid for by Alice to make that transfer.
-- Another transfer of 1000 coins from Alice to Bob.
-- The additional 54100 coins of gas paid for by Alice to make that transfer.
+- RESTとファウセットクライアントの初期化
+- Alice と Bob の2つのアカウントの作成
+- ファウセットからの Alice のアカウントへの資金の供給
+- ファウセットからBob のアカウントを作成
+- Alice から Bob へ1,000コインの転送
+- その転送を行うために Alice が支払ったガス代54,100コイン
+- Alice から Bob へもう1,000コインを転送
+- その転送により Alice が追加のガス代54,100コインを負担
 
-Now see the below walkthrough of the SDK functions used to accomplish the above steps.
-</TabItem>
+上記の手順を達成するために使用されるSDK機能の以下の手順をご覧ください。 </TabItem>
 
   <TabItem value="rust" label="Rust">
-    An output very similar to the following will appear after executing the above command:
+    上記コマンドを実行すると、以下のような出力が表示されます。
 
 ```yaml
 === Addresses ===
@@ -197,56 +196,48 @@ Alice: 99889800
 Bob: 2000
 ```
 
-The above output demonstrates that the `transfer-coin` example executes the following steps:
+上記の出力は、`transfer-coin`サンプルが次のステップを実行することを示しています。
 
-- Initializing the REST and faucet clients.
-- The creation of two accounts: Alice and Bob.
-- The funding and creation of Alice's account from a faucet.
-- The creation of Bob's account from a faucet.
-- The transferring of 1000 coins from Alice to Bob.
-- The 54100 coins of gas paid for by Alice to make that transfer.
-- Another transfer of 1000 coins from Alice to Bob.
-- The additional 54100 coins of gas paid for by Alice to make that transfer.
+- RESTとファウセットクライアントの初期化
+- Alice と Bob の2つのアカウントの作成
+- ファウセットからの Alice のアカウントへの資金の供給
+- ファウセットから Bob のアカウントを作成
+- Alice から Bob へ1,000コインの転送
+- その転送により Alice がガス代54,100コインを負担
+- Alice から Bob へもう1,000コインを転送
+- その転送により Alice が追加のガス代54,100コインを負担
 
-Now see the below walkthrough of the SDK functions used to accomplish the above steps.
-</TabItem>
-</Tabs>
+上記の手順を達成するために使用されるSDK機能の以下の手順をご覧ください。 </TabItem> </Tabs>
 
----
+***
 
-## Step 4: The SDK in depth
+## ステップ 4: SDK の詳細
 
-The `transfer-coin` example code uses helper functions to interact with the [REST API](https://aptos.dev/nodes/aptos-api-spec#/). This section reviews each of the calls and gives insights into functionality.
+`transfer-coin` サンプルのコードはヘルパー関数を使用して [REST API](https://aptos.dev/nodes/aptos-api-spec#/) とやり取りします。 このセクションでは、それぞれの呼び出しをレビューし、機能に関する洞察を提供します。
 
 <Tabs groupId="sdk-examples">
   <TabItem value="typescript" label="Typescript">
 
-:::tip See the full code
-See the TypeScript [`transfer_coin`](https://github.com/aptos-labs/aptos-ts-sdk/blob/main/examples/typescript/transfer_coin.ts) for the complete code as you follow the below steps.
+:::tip 完全なコードを見る
+TypeScript版 [`transfer_coin`](https://github.com/aptos-labs/aptos-ts-sdk/blob/main/examples/typescript/transfer_coin.ts)を参照してください。
 :::
-</TabItem>
-<TabItem value="python" label="Python">
 
-:::tip See the full code
-See the Python [`transfer_coin`](https://github.com/aptos-labs/aptos-core/blob/main/ecosystem/python/sdk/examples/transfer_coin.py) for the complete code as you follow the below steps.
+:::tip 完全なコードを見る
+Python版 [`transfer_coin`](https://github.com/aptos-labs/aptos-core/blob/main/ecosystem/python/sdk/examples/transfer_coin.py)を参照してください。
 :::
-</TabItem>
-<TabItem value="rust" label="Rust">
 
-:::tip See the full code
-See the Rust [`transfer-coin`](https://github.com/aptos-labs/aptos-core/blob/main/sdk/examples/transfer-coin.rs) for the complete code as you follow the below steps.
+:::tip 完全なコードを見る
+Rust版 [`transfer_coin`](https://github.com/aptos-labs/aptos-core/blob/main/sdk/examples/transfer-coin.rs)を参照してください。
 :::
-</TabItem>
-</Tabs>
 
----
+***
 
-### Step 4.1: Initializing the clients
+### ステップ 4.1: クライアントの初期化
 
 <Tabs groupId="sdk-examples">
   <TabItem value="typescript" label="Typescript">
 
-In the first step, the `transfer_coin` example initializes the Aptos client:
+まず `transfer_coin`のサンプルでは Aptos クライアントを初期化します。
 
 ```ts
 const APTOS_NETWORK: Network =
@@ -256,15 +247,15 @@ const aptos = new Aptos(config);
 ```
 
 :::tip
-By default, the Aptos client points to Aptos devnet services. However, it can be configured with the `network` input argument
+デフォルトでは、Aptos クライアントは Aptos の devnet サービスを指します。 しかし、これは`network`入力引数でも設定することができます。
 :::
 
-  </TabItem>
+  
   <TabItem value="python" label="Python">
-  In the first step, the `transfer-coin` example initializes both the REST and faucet clients:
+  最初のステップでは、 `transfer-coin` サンプルはRESTクライアントとファウセットクライアントの両方を初期化します。
 
-- The REST client interacts with the REST API.
-- The faucet client interacts with the devnet Faucet service for creating and funding accounts.
+- REST クライアントは、REST API とやり取りします。
+- ファウセットクライアントは、アカウントの作成と資金提供のためのdevnet Faucetサービスと相互作用します。
 
 ```python
 :!: static/sdks/python/examples/transfer_coin.py section_1
@@ -278,29 +269,29 @@ By default, the Aptos client points to Aptos devnet services. However, it can be
 
 :::tip
 
-By default, the URLs for both the services point to Aptos devnet services. However, they can be configured with the following environment variables:
+デフォルトでは、両方のサービスの URL は Aptos devnet サービスを指します。 ただし、これらは以下の環境変数で設定できます。
 
 - `APTOS_NODE_URL`
-- `APTOS_FAUCET_URL`
-  :::
-  </TabItem>
-  <TabItem value="rust" label="Rust">
-  In the first step, the `transfer-coin` example initializes both the REST and faucet clients:
 
-- The REST client interacts with the REST API.
-- The faucet client interacts with the devnet Faucet service for creating and funding accounts.
+- `APTOS_FAUCET_URL`
+  ::: </TabItem> <TabItem value="rust" label="Rust">
+  最初のステップでは、 `transfer-coin` サンプルはRESTクライアントとファウセットクライアントの両方を初期化します。
+
+- REST クライアントは、REST API とやり取りします。
+
+- ファウセットクライアントは、アカウントの作成と資金提供のための devnet Faucet サービスとやりとりします。
 
 ```rust
 :!: static/sdks/rust/examples/transfer-coin.rs section_1a
 ```
 
-Using the API client we can create a `CoinClient`, which we use for common coin operations such as transferring coins and checking balances.
+API クライアントを使用して、コインの転送や残高の確認などの一般的なコイン操作に使用する `CoinClient` を作成できます。
 
 ```rust
 :!: static/sdks/rust/examples/transfer-coin.rs section_1b
 ```
 
-In the example we initialize the URL values as such:
+この例では、URL の値を以下のように初期化します。
 
 ```rust
 :!: static/sdks/rust/examples/transfer-coin.rs section_1c
@@ -308,17 +299,15 @@ In the example we initialize the URL values as such:
 
 :::tip
 
-By default, the URLs for both the services point to Aptos devnet services. However, they can be configured with the following environment variables:
+デフォルトでは、両方のサービスの URL は Aptos devnet サービスを指します。 ただし、これらは以下の環境変数で設定できます。
 
 - `APTOS_NODE_URL`
 - `APTOS_FAUCET_URL`
-  :::
-  </TabItem>
-  </Tabs>
+  ::: </TabItem> </Tabs>
 
----
+***
 
-### Step 4.2: Creating local accounts
+### ステップ 4.2: ローカルアカウントの作成
 
 The next step is to create two accounts locally. [Accounts](../concepts/accounts.md) represent both on and off-chain state. Off-chain state consists of an address and the public/private key pair used to authenticate ownership. This step demonstrates how to generate that off-chain state.
 
@@ -330,28 +319,28 @@ const alice = Account.generate();
 const bob = Account.generate();
 ```
 
-  </TabItem>
+  
   <TabItem value="python" label="Python">
 
 ```python
 :!: static/sdks/python/examples/transfer_coin.py section_2
 ```
 
-  </TabItem>
+  
   <TabItem value="rust" label="Rust">
 
 ```rust
 :!: static/sdks/rust/examples/transfer-coin.rs section_2
 ```
 
-  </TabItem>
-</Tabs>
+  
 
----
 
-### Step 4.3: Creating blockchain accounts
+***
 
-In Aptos, each account must have an on-chain representation in order to receive tokens and coins and interact with other dapps. An account represents a medium for storing assets; hence, it must be explicitly created. This example leverages the Faucet to create and fund Alice's account and to create but not fund Bob's account:
+### ステップ 4.3: ブロックチェーンアカウントの作成
+
+Aptosでは、各アカウントはトークンとコインを受け取り、他のdappsとやり取りするためにオンチェーン上の表明が必要です。 アカウントは資産を保存するための媒体を表します; したがって、それは明示的に作成する必要があります。 この例では、Faucetを利用してAliceのアカウントを作成・資金を供給し、一方Bobのアカウントは作成のみ行い資金の供給はしません。
 
 <Tabs groupId="sdk-examples">
   <TabItem value="typescript" label="Typescript">
@@ -363,28 +352,28 @@ await aptos.fundAccount({
 });
 ```
 
-  </TabItem>
+  
   <TabItem value="python" label="Python">
 
 ```python
 :!: static/sdks/python/examples/transfer_coin.py section_3
 ```
 
-  </TabItem>
+  
   <TabItem value="rust" label="Rust">
 
 ```rust
 :!: static/sdks/rust/examples/transfer-coin.rs section_3
 ```
 
-  </TabItem>
-</Tabs>
+  
 
----
 
-### Step 4.4: Reading balances
+***
 
-In this step, the SDK translates a single call into the process of querying a resource and reading a field from that resource.
+### ステップ 4.4: 残高の読み込み
+
+このステップでは、SDK は単一の呼び出しをリソースへの問い合わせと、そのリソースからフィールドを読み込むプロセスに変換します。
 
 <Tabs groupId="sdk-examples">
   <TabItem value="typescript" label="Typescript">
@@ -394,7 +383,7 @@ const aliceBalance = await balance("Alice", alice.accountAddress);
 const bobBalance = await balance("Bob", bob.accountAddress);
 ```
 
-Behind the scenes, the `balance` function uses the SDK `getAccountAPTAmount` function that queries the Indexer service and reads the current stored value:
+この裏では、`balance`関数は、インデクサーサービスに問い合わせて現在保存されている値を読み込むSDKの`getAccountAPTAmount`関数を使用しています。
 
 ```ts
 const balance = async (
@@ -409,14 +398,14 @@ const balance = async (
 };
 ```
 
-  </TabItem>
+  
   <TabItem value="python" label="Python">
 
 ```python
 :!: static/sdks/python/examples/transfer_coin.py section_4
 ```
 
-Behind the scenes, the SDK queries the CoinStore resource for the AptosCoin and reads the current stored value:
+この裏では、SDKはAptosCoinのためにCoinStoreリソースをクエリし、現在保存されている値を読み込んでいます。
 
 ```python
 def account_balance(self, account_address: str) -> int:
@@ -426,14 +415,14 @@ def account_balance(self, account_address: str) -> int:
     )["data"]["coin"]["value"]
 ```
 
-  </TabItem>
+  
   <TabItem value="rust" label="Rust">
 
 ```rust
 :!: static/sdks/rust/examples/transfer-coin.rs section_4
 ```
 
-Behind the scenes, the SDK queries the CoinStore resource for the AptosCoin and reads the current stored value:
+この裏では、SDKはAptosCoinのためにCoinStoreリソースをクエリし、現在保存されている値を読み込んでいます。
 
 ```rust
 let balance = self
@@ -441,16 +430,14 @@ let balance = self
     .await?;
 ```
 
-  </TabItem>
-</Tabs>
+  
 
----
 
-### Step 4.5: Transferring
+***
 
-Like the previous step, this is another helper step that constructs a transaction transferring the coins from Alice to Bob. The SDK provides a helper function to generate a `transferCoinTransaction` transaction that can be simulated or submitted to chain. Once a transaction has been submitted to chain, the API will return a transaction hash that can be used in the subsequent step to check on the transaction status. The Aptos blockchain does perform a handful of validation checks on submission; and if any of those fail, the user will instead be given an error. These validations use the transaction signature and unused sequence number, and submitting the transaction to the appropriate chain.
-<Tabs groupId="sdk-examples">
-<TabItem value="typescript" label="Typescript">
+### ステップ 4.5: 転送
+
+前のステップと同様に、これはAliceからBobにコインを転送するトランザクションを構築するもう1つのヘルパーステップです。 SDK は、チェーンに対してシミュレートまたは送信できる `transferCoinTransaction` トランザクションを生成するためのヘルパー関数を提供します。 トランザクションがチェーンに送信されると、 API はトランザクションの状態を確認するために次のステップで使用できるトランザクションハッシュを返します。 Aptosブロックチェーンは、送信時に一握りの検証チェックを実行します。 それらのいずれかに失敗した場合、ユーザーにはエラーが返されます。 これらの検証は、トランザクション署名と未使用のシーケンス番号を使用し、適切なチェーンにトランザクションを送信します。 <Tabs groupId="sdk-examples"> <TabItem value="typescript" label="Typescript">
 
 ```ts
 const transaction = await aptos.transferCoinTransaction({
@@ -464,7 +451,7 @@ const pendingTxn = await aptos.signAndSubmitTransaction({
 });
 ```
 
-Behind the scenes, the `transferCoinTransaction` function generates a transaction payload that can be simulated or submitted to chain:
+このは裏で、 `transferCoinTransaction` 関数は、チェーンにシミュレートまたは送信できるトランザクションペイロードを生成しています。
 
 ```ts
 export async function transferCoinTransaction(args: {
@@ -492,67 +479,67 @@ export async function transferCoinTransaction(args: {
 }
 ```
 
-Breaking the above down into pieces:
+上記の概要:
 
-1. `transfer_coins` internally is a `EntryFunction` in the [Aptos Account Move module](https://github.com/aptos-labs/aptos-core/blob/main/aptos-move/framework/aptos-framework/sources/aptos_account.move#L92), i.e. an entry function in Move that is directly callable.
-2. The Move function is stored on the aptos_account module: `0x1::aptos_account`.
-3. The `transfer_coins` functions uses the [Coin Move module](https://github.com/aptos-labs/aptos-core/blob/main/aptos-move/framework/aptos-framework/sources/coin.move)
-4. Because the Coin module can be used by other coins, the `transferCoinTransaction` must explicitly specify which coin type to transfer. If not specified with `coinType` it defaults to `0x1::aptos_coin::AptosCoin`.
+1. `transfer_coins` は内部的には [Aptos Account Move モジュール](https://github.com/aptos-labs/aptos-core/blob/main/aptos-move/framework/aptos-framework/sources/aptos_account.move#L92)の`EntryFunction` です。つまり、Moveのエントリ関数は直接呼び出せます。
+2. Move の関数は aptos_account モジュール: `0x1::aptos_account` に保存されてます。
+3. `transfer_coins` 関数は、[Coin Move module](https://github.com/aptos-labs/aptos-core/blob/main/aptos-move/framework/aptos-framework/sources/coin.move) を使用します。
+4. Coinモジュールは他のコインで使用できるため、`transferCoinTransaction` は転送するコインの種類を明示的に指定する必要があります。 `coinType` は指定されていない限りデフォルトでは `0x1::aptos_coin::AptosCoin` です。
 
-  </TabItem>
+  
   <TabItem value="python" label="Python">
-Like the previous step, this is another helper step that constructs a transaction transferring the coins from Alice to Bob. For correctly generated transactions, the API will return a transaction hash that can be used in the subsequent step to check on the transaction status. The Aptos blockchain does perform a handful of validation checks on submission; and if any of those fail, the user will instead be given an error. These validations use the transaction signature and unused sequence number, and submitting the transaction to the appropriate chain.
+前のステップと同様に、これはAliceからBobにコインを転送するトランザクションを構築するもう1つのヘルパーステップです。 正しく生成されたトランザクションの場合、API はトランザクションの状態を確認するために次のステップで使用できるトランザクションハッシュを返します。 Aptosブロックチェーンは、送信時に一握りの検証チェックを実行します。 それらのいずれかに失敗した場合、ユーザーにはエラーが返されます。 これらの検証は、トランザクション署名と未使用のシーケンス番号を使用し、適切なチェーンにトランザクションを送信します。
 
 ```python
 :!: static/sdks/python/examples/transfer_coin.py section_5
 ```
 
-Behind the scenes the Python SDK generates, signs, and submits a transaction:
+裏では、Python SDK がトランザクションを生成、署名、送信します。
 
 ```python
 :!: static/sdks/python/aptos_sdk/async_client.py bcs_transfer
 ```
 
-Breaking the above down into pieces:
+上記の概要:
 
-1. `transfer` internally is a `EntryFunction` in the [Coin Move module](https://github.com/aptos-labs/aptos-core/blob/main/aptos-move/framework/aptos-framework/sources/coin.move#L412), i.e. an entry function in Move that is directly callable.
-1. The Move function is stored on the coin module: `0x1::coin`.
-1. Because the Coin module can be used by other coins, the transfer must explicitly use a `TypeTag` to define which coin to transfer.
-1. The transaction arguments must be placed into `TransactionArgument`s with type specifiers (`Serializer.{type}`), that will serialize the value into the appropriate type at transaction generation time.
+1. `transfer` は内部的には [Coin Move モジュール](https://github.com/aptos-labs/aptos-core/blob/main/aptos-move/framework/aptos-framework/sources/coin.move#L412)の`EntryFunction` です。つまり、Moveのエントリ関数は直接呼び出せます。
+2. Move関数はコインモジュール`0x1::coin`に保存されます。
+3. Coinモジュールは他のコインで使用できるので、transfer には明示的にどのコインを転送するかを定義するために`TypeTag`を使用する必要があります。
+4. トランザクション引数は型指定子 (`Serializer.{type}`) を持つ `TransactionArgument`に配置する必要があり、これはトランザクション生成時に適切な型に値をシリアライズされます。
 
-  </TabItem>
+  
   <TabItem value="rust" label="Rust">
-Like the previous step, this is another helper step that constructs a transaction transferring the coins from Alice to Bob. For correctly generated transactions, the API will return a transaction hash that can be used in the subsequent step to check on the transaction status. The Aptos blockchain does perform a handful of validation checks on submission; and if any of those fail, the user will instead be given an error. These validations use the transaction signature and unused sequence number, and submitting the transaction to the appropriate chain.
+前のステップと同様に、これはAliceからBobにコインを転送するトランザクションを構築するもう1つのヘルパーステップです。 正しく生成されたトランザクションの場合、API はトランザクションの状態を確認するために次のステップで使用できるトランザクションハッシュを返します。 Aptosブロックチェーンは、送信時に一握りの検証チェックを実行します。 それらのいずれかに失敗した場合、ユーザーにはエラーが返されます。 これらの検証は、トランザクション署名と未使用のシーケンス番号を使用し、適切なチェーンにトランザクションを送信します。
 
 ```rust
 :!: static/sdks/rust/examples/transfer-coin.rs section_5
 ```
 
-Behind the scenes the Rust SDK generates, signs, and submits a transaction:
+裏では、Rust SDK がトランザクションを生成、署名、送信します。
 
 ```rust
 :!: static/sdks/rust/src/coin_client.rs section_1
 ```
 
-Breaking the above down into pieces:
+上記の概要:
 
-1. First, we fetch the chain ID, necessary for building the transaction payload.
-1. `transfer` internally is a `EntryFunction` in the [Coin Move module](https://github.com/aptos-labs/aptos-core/blob/main/aptos-move/framework/aptos-framework/sources/coin.move#L412), i.e. an entry function in Move that is directly callable.
-1. The Move function is stored on the coin module: `0x1::coin`.
-1. Because the Coin module can be used by other coins, the transfer must explicitly use a `TypeTag` to define which coin to transfer.
-1. The transaction arguments, such as `to_account` and `amount`, must be encoded as BCS to use with the `TransactionBuilder`.
+1. まず、トランザクションペイロードの構築に必要なチェーンIDを取得します。
+2. `transfer` は内部的には [Coin Move モジュール](https://github.com/aptos-labs/aptos-core/blob/main/aptos-move/framework/aptos-framework/sources/coin.move#L412)の`EntryFunction` です。つまり、Moveのエントリ関数は直接呼び出せます。
+3. Move関数はコインモジュール`0x1::coin`に保存されます。
+4. Coinモジュールは他のコインで使用できるので、transfer には明示的にどのコインを転送するかを定義するために`TypeTag`を使用する必要があります。
+5. `to_account` や `amount` のようなトランザクション引数は、 `TransactionBuilder` で使用するにはBCSとしてエンコードする必要があります。
 
-  </TabItem>
-</Tabs>
+  
 
----
 
-### Step 4.6: Waiting for transaction resolution
+***
+
+### ステップ 4.6: トランザクションの解決を待つ
 
 <Tabs groupId="sdk-examples">
   <TabItem value="typescript" label="Typescript">
 
-In the TypeScript SDK, just calling `waitForTransaction` is sufficient to wait for the transaction to complete. The function will return the `Transaction` returned by the API once it is processed (either successfully or unsuccessfully) or throw an error if processing time exceeds the timeout.
+TypeScript SDKでは、`waitForTransaction`を呼び出すだけでトランザクションが完了するまで待つことができます。 この関数は、処理が完了したら (それが成功か失敗かによらず) APIから返される `Transaction` を返却、もしくは処理がタイムアウトとなった場合はエラーを返します。
 
 ```ts
 const response = await aptos.waitForTransaction({
@@ -560,28 +547,28 @@ const response = await aptos.waitForTransaction({
 });
 ```
 
-  </TabItem>
+  
   <TabItem value="python" label="Python">
 
-The transaction hash can be used to query the status of a transaction:
+トランザクションハッシュはトランザクションの状態を問い合わせるために使用できます:
 
 ```python
 :!: static/sdks/python/examples/transfer_coin.py section_6
 ```
 
-  </TabItem>
+  
   <TabItem value="rust" label="Rust">
 
-The transaction hash can be used to query the status of a transaction:
+トランザクションハッシュはトランザクションの状態を問い合わせるために使用できます:
 
 ```rust
 :!: static/sdks/rust/examples/transfer-coin.rs section_6
 ```
 
-  </TabItem>
-</Tabs>
+  
 
-## Supporting documentation
+
+## 役に立つドキュメント
 
 - [Account basics](../concepts/accounts.md)
 - [TypeScript SDK](../sdks/ts-sdk/index.md)
