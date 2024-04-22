@@ -1,6 +1,6 @@
 ---
-title: "初めてのトランザクション"
-slug: "your-first-transaction"
+title: 初めてのトランザクション
+slug: your-first-transaction
 ---
 
 import Tabs from '@theme/Tabs';
@@ -18,7 +18,7 @@ Install your preferred SDK from the below list:
 - [Python SDK](../sdks/python-sdk.md)
 - [Rust SDK](../sdks/rust-sdk.md)
 
----
+***
 
 ## Step 2: Run the example
 
@@ -50,7 +50,7 @@ Run the [`transfer_coin`](https://github.com/aptos-labs/aptos-ts-sdk/blob/main/e
 pnpm run transfer_coin
 ```
 
-  </TabItem>
+  
   <TabItem value="python" label="Python">
 
 Clone the `aptos-core` repo:
@@ -78,7 +78,7 @@ Run the [`transfer-coin`](https://github.com/aptos-labs/aptos-core/blob/main/eco
 poetry run python -m examples.transfer_coin
 ```
 
-  </TabItem>
+  
   <TabItem value="rust" label="Rust">
 
 Clone the `aptos-core` repo:
@@ -99,10 +99,10 @@ Run the [`transfer-coin`](https://github.com/aptos-labs/aptos-core/blob/main/sdk
 cargo run --example transfer-coin
 ```
 
-  </TabItem>
-</Tabs>
+  
 
----
+
+***
 
 ## Step 3: Understand the output
 
@@ -173,8 +173,7 @@ The above output demonstrates that the `transfer-coin` example executes the foll
 - Another transfer of 1000 coins from Alice to Bob.
 - The additional 54100 coins of gas paid for by Alice to make that transfer.
 
-Now see the below walkthrough of the SDK functions used to accomplish the above steps.
-</TabItem>
+Now see the below walkthrough of the SDK functions used to accomplish the above steps. </TabItem>
 
   <TabItem value="rust" label="Rust">
     An output very similar to the following will appear after executing the above command:
@@ -208,11 +207,9 @@ The above output demonstrates that the `transfer-coin` example executes the foll
 - Another transfer of 1000 coins from Alice to Bob.
 - The additional 54100 coins of gas paid for by Alice to make that transfer.
 
-Now see the below walkthrough of the SDK functions used to accomplish the above steps.
-</TabItem>
-</Tabs>
+Now see the below walkthrough of the SDK functions used to accomplish the above steps. </TabItem> </Tabs>
 
----
+***
 
 ## Step 4: The SDK in depth
 
@@ -224,22 +221,16 @@ The `transfer-coin` example code uses helper functions to interact with the [RES
 :::tip See the full code
 See the TypeScript [`transfer_coin`](https://github.com/aptos-labs/aptos-ts-sdk/blob/main/examples/typescript/transfer_coin.ts) for the complete code as you follow the below steps.
 :::
-</TabItem>
-<TabItem value="python" label="Python">
 
 :::tip See the full code
 See the Python [`transfer_coin`](https://github.com/aptos-labs/aptos-core/blob/main/ecosystem/python/sdk/examples/transfer_coin.py) for the complete code as you follow the below steps.
 :::
-</TabItem>
-<TabItem value="rust" label="Rust">
 
 :::tip See the full code
 See the Rust [`transfer-coin`](https://github.com/aptos-labs/aptos-core/blob/main/sdk/examples/transfer-coin.rs) for the complete code as you follow the below steps.
 :::
-</TabItem>
-</Tabs>
 
----
+***
 
 ### Step 4.1: Initializing the clients
 
@@ -259,7 +250,7 @@ const aptos = new Aptos(config);
 By default, the Aptos client points to Aptos devnet services. However, it can be configured with the `network` input argument
 :::
 
-  </TabItem>
+  
   <TabItem value="python" label="Python">
   In the first step, the `transfer-coin` example initializes both the REST and faucet clients:
 
@@ -281,13 +272,13 @@ By default, the Aptos client points to Aptos devnet services. However, it can be
 By default, the URLs for both the services point to Aptos devnet services. However, they can be configured with the following environment variables:
 
 - `APTOS_NODE_URL`
+
 - `APTOS_FAUCET_URL`
-  :::
-  </TabItem>
-  <TabItem value="rust" label="Rust">
+  ::: </TabItem> <TabItem value="rust" label="Rust">
   In the first step, the `transfer-coin` example initializes both the REST and faucet clients:
 
 - The REST client interacts with the REST API.
+
 - The faucet client interacts with the devnet Faucet service for creating and funding accounts.
 
 ```rust
@@ -312,11 +303,9 @@ By default, the URLs for both the services point to Aptos devnet services. Howev
 
 - `APTOS_NODE_URL`
 - `APTOS_FAUCET_URL`
-  :::
-  </TabItem>
-  </Tabs>
+  ::: </TabItem> </Tabs>
 
----
+***
 
 ### Step 4.2: Creating local accounts
 
@@ -330,24 +319,24 @@ const alice = Account.generate();
 const bob = Account.generate();
 ```
 
-  </TabItem>
+  
   <TabItem value="python" label="Python">
 
 ```python
 :!: static/sdks/python/examples/transfer_coin.py section_2
 ```
 
-  </TabItem>
+  
   <TabItem value="rust" label="Rust">
 
 ```rust
 :!: static/sdks/rust/examples/transfer-coin.rs section_2
 ```
 
-  </TabItem>
-</Tabs>
+  
 
----
+
+***
 
 ### Step 4.3: Creating blockchain accounts
 
@@ -363,24 +352,24 @@ await aptos.fundAccount({
 });
 ```
 
-  </TabItem>
+  
   <TabItem value="python" label="Python">
 
 ```python
 :!: static/sdks/python/examples/transfer_coin.py section_3
 ```
 
-  </TabItem>
+  
   <TabItem value="rust" label="Rust">
 
 ```rust
 :!: static/sdks/rust/examples/transfer-coin.rs section_3
 ```
 
-  </TabItem>
-</Tabs>
+  
 
----
+
+***
 
 ### Step 4.4: Reading balances
 
@@ -409,7 +398,7 @@ const balance = async (
 };
 ```
 
-  </TabItem>
+  
   <TabItem value="python" label="Python">
 
 ```python
@@ -426,7 +415,7 @@ def account_balance(self, account_address: str) -> int:
     )["data"]["coin"]["value"]
 ```
 
-  </TabItem>
+  
   <TabItem value="rust" label="Rust">
 
 ```rust
@@ -441,16 +430,14 @@ let balance = self
     .await?;
 ```
 
-  </TabItem>
-</Tabs>
+  
 
----
+
+***
 
 ### Step 4.5: Transferring
 
-Like the previous step, this is another helper step that constructs a transaction transferring the coins from Alice to Bob. The SDK provides a helper function to generate a `transferCoinTransaction` transaction that can be simulated or submitted to chain. Once a transaction has been submitted to chain, the API will return a transaction hash that can be used in the subsequent step to check on the transaction status. The Aptos blockchain does perform a handful of validation checks on submission; and if any of those fail, the user will instead be given an error. These validations use the transaction signature and unused sequence number, and submitting the transaction to the appropriate chain.
-<Tabs groupId="sdk-examples">
-<TabItem value="typescript" label="Typescript">
+Like the previous step, this is another helper step that constructs a transaction transferring the coins from Alice to Bob. The SDK provides a helper function to generate a `transferCoinTransaction` transaction that can be simulated or submitted to chain. Once a transaction has been submitted to chain, the API will return a transaction hash that can be used in the subsequent step to check on the transaction status. The Aptos blockchain does perform a handful of validation checks on submission; and if any of those fail, the user will instead be given an error. These validations use the transaction signature and unused sequence number, and submitting the transaction to the appropriate chain. <Tabs groupId="sdk-examples"> <TabItem value="typescript" label="Typescript">
 
 ```ts
 const transaction = await aptos.transferCoinTransaction({
@@ -499,7 +486,7 @@ Breaking the above down into pieces:
 3. The `transfer_coins` functions uses the [Coin Move module](https://github.com/aptos-labs/aptos-core/blob/main/aptos-move/framework/aptos-framework/sources/coin.move)
 4. Because the Coin module can be used by other coins, the `transferCoinTransaction` must explicitly specify which coin type to transfer. If not specified with `coinType` it defaults to `0x1::aptos_coin::AptosCoin`.
 
-  </TabItem>
+  
   <TabItem value="python" label="Python">
 Like the previous step, this is another helper step that constructs a transaction transferring the coins from Alice to Bob. For correctly generated transactions, the API will return a transaction hash that can be used in the subsequent step to check on the transaction status. The Aptos blockchain does perform a handful of validation checks on submission; and if any of those fail, the user will instead be given an error. These validations use the transaction signature and unused sequence number, and submitting the transaction to the appropriate chain.
 
@@ -516,11 +503,11 @@ Behind the scenes the Python SDK generates, signs, and submits a transaction:
 Breaking the above down into pieces:
 
 1. `transfer` internally is a `EntryFunction` in the [Coin Move module](https://github.com/aptos-labs/aptos-core/blob/main/aptos-move/framework/aptos-framework/sources/coin.move#L412), i.e. an entry function in Move that is directly callable.
-1. The Move function is stored on the coin module: `0x1::coin`.
-1. Because the Coin module can be used by other coins, the transfer must explicitly use a `TypeTag` to define which coin to transfer.
-1. The transaction arguments must be placed into `TransactionArgument`s with type specifiers (`Serializer.{type}`), that will serialize the value into the appropriate type at transaction generation time.
+2. The Move function is stored on the coin module: `0x1::coin`.
+3. Because the Coin module can be used by other coins, the transfer must explicitly use a `TypeTag` to define which coin to transfer.
+4. The transaction arguments must be placed into `TransactionArgument`s with type specifiers (`Serializer.{type}`), that will serialize the value into the appropriate type at transaction generation time.
 
-  </TabItem>
+  
   <TabItem value="rust" label="Rust">
 Like the previous step, this is another helper step that constructs a transaction transferring the coins from Alice to Bob. For correctly generated transactions, the API will return a transaction hash that can be used in the subsequent step to check on the transaction status. The Aptos blockchain does perform a handful of validation checks on submission; and if any of those fail, the user will instead be given an error. These validations use the transaction signature and unused sequence number, and submitting the transaction to the appropriate chain.
 
@@ -537,15 +524,15 @@ Behind the scenes the Rust SDK generates, signs, and submits a transaction:
 Breaking the above down into pieces:
 
 1. First, we fetch the chain ID, necessary for building the transaction payload.
-1. `transfer` internally is a `EntryFunction` in the [Coin Move module](https://github.com/aptos-labs/aptos-core/blob/main/aptos-move/framework/aptos-framework/sources/coin.move#L412), i.e. an entry function in Move that is directly callable.
-1. The Move function is stored on the coin module: `0x1::coin`.
-1. Because the Coin module can be used by other coins, the transfer must explicitly use a `TypeTag` to define which coin to transfer.
-1. The transaction arguments, such as `to_account` and `amount`, must be encoded as BCS to use with the `TransactionBuilder`.
+2. `transfer` internally is a `EntryFunction` in the [Coin Move module](https://github.com/aptos-labs/aptos-core/blob/main/aptos-move/framework/aptos-framework/sources/coin.move#L412), i.e. an entry function in Move that is directly callable.
+3. The Move function is stored on the coin module: `0x1::coin`.
+4. Because the Coin module can be used by other coins, the transfer must explicitly use a `TypeTag` to define which coin to transfer.
+5. The transaction arguments, such as `to_account` and `amount`, must be encoded as BCS to use with the `TransactionBuilder`.
 
-  </TabItem>
-</Tabs>
+  
 
----
+
+***
 
 ### Step 4.6: Waiting for transaction resolution
 
@@ -560,7 +547,7 @@ const response = await aptos.waitForTransaction({
 });
 ```
 
-  </TabItem>
+  
   <TabItem value="python" label="Python">
 
 The transaction hash can be used to query the status of a transaction:
@@ -569,7 +556,7 @@ The transaction hash can be used to query the status of a transaction:
 :!: static/sdks/python/examples/transfer_coin.py section_6
 ```
 
-  </TabItem>
+  
   <TabItem value="rust" label="Rust">
 
 The transaction hash can be used to query the status of a transaction:
@@ -578,8 +565,8 @@ The transaction hash can be used to query the status of a transaction:
 :!: static/sdks/rust/examples/transfer-coin.rs section_6
 ```
 
-  </TabItem>
-</Tabs>
+  
+
 
 ## Supporting documentation
 
