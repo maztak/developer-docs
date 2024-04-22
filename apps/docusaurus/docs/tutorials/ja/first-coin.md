@@ -1,14 +1,14 @@
 ---
-title: Your First Coin
+title: 初めてのコイン
 slug: your-first-coin
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Your First Coin
+# 初めてのコイン
 
-This tutorial introduces how you can compile, deploy, and mint your own coin, named [MoonCoin](https://github.com/aptos-labs/aptos-core/tree/main/aptos-move/move-examples/moon_coin).
+このチュートリアルでは、 [MoonCoin](https://github.com/aptos-labs/aptos-core/tree/main/aptos-move/move-examples/moon_coin)という名前の独自のコインをコンパイル、デプロイ、およびミントする方法を紹介します。
 
 ## Step 1: Pick an SDK
 
