@@ -371,9 +371,9 @@ await aptos.fundAccount({
 
 ***
 
-### Step 4.4: Reading balances
+### ステップ 4.4: 残高の読み込み
 
-In this step, the SDK translates a single call into the process of querying a resource and reading a field from that resource.
+このステップでは、SDK は単一の呼び出しをリソースへの問い合わせと、そのリソースからフィールドを読み込むプロセスに変換します。
 
 <Tabs groupId="sdk-examples">
   <TabItem value="typescript" label="Typescript">
@@ -383,7 +383,7 @@ const aliceBalance = await balance("Alice", alice.accountAddress);
 const bobBalance = await balance("Bob", bob.accountAddress);
 ```
 
-Behind the scenes, the `balance` function uses the SDK `getAccountAPTAmount` function that queries the Indexer service and reads the current stored value:
+この裏では、`balance`関数は、インデクサーサービスに問い合わせて現在保存されている値を読み込むSDKの`getAccountAPTAmount`関数を使用しています。
 
 ```ts
 const balance = async (
@@ -405,7 +405,7 @@ const balance = async (
 :!: static/sdks/python/examples/transfer_coin.py section_4
 ```
 
-Behind the scenes, the SDK queries the CoinStore resource for the AptosCoin and reads the current stored value:
+この裏では、SDKはAptosCoinのためにCoinStoreリソースをクエリし、現在保存されている値を読み込んでいます。
 
 ```python
 def account_balance(self, account_address: str) -> int:
@@ -422,7 +422,7 @@ def account_balance(self, account_address: str) -> int:
 :!: static/sdks/rust/examples/transfer-coin.rs section_4
 ```
 
-Behind the scenes, the SDK queries the CoinStore resource for the AptosCoin and reads the current stored value:
+この裏では、SDKはAptosCoinのためにCoinStoreリソースをクエリし、現在保存されている値を読み込んでいます。
 
 ```rust
 let balance = self
@@ -435,9 +435,9 @@ let balance = self
 
 ***
 
-### Step 4.5: Transferring
+### ステップ 4.5: 転送
 
-Like the previous step, this is another helper step that constructs a transaction transferring the coins from Alice to Bob. The SDK provides a helper function to generate a `transferCoinTransaction` transaction that can be simulated or submitted to chain. Once a transaction has been submitted to chain, the API will return a transaction hash that can be used in the subsequent step to check on the transaction status. The Aptos blockchain does perform a handful of validation checks on submission; and if any of those fail, the user will instead be given an error. These validations use the transaction signature and unused sequence number, and submitting the transaction to the appropriate chain. <Tabs groupId="sdk-examples"> <TabItem value="typescript" label="Typescript">
+前のステップと同様に、これはAliceからBobにコインを転送するトランザクションを構築するもう1つのヘルパーステップです。 SDK は、チェーンに対してシミュレートまたは送信できる `transferCoinTransaction` トランザクションを生成するためのヘルパー関数を提供します。 トランザクションがチェーンに送信されると、 API はトランザクションの状態を確認するために次のステップで使用できるトランザクションハッシュを返します。 Aptosブロックチェーンは、送信時に一握りの検証チェックを実行します。 それらのいずれかに失敗した場合、ユーザーにはエラーが返されます。 これらの検証は、トランザクション署名と未使用のシーケンス番号を使用し、適切なチェーンにトランザクションを送信します。 <Tabs groupId="sdk-examples"> <TabItem value="typescript" label="Typescript">
 
 ```ts
 const transaction = await aptos.transferCoinTransaction({
@@ -451,7 +451,7 @@ const pendingTxn = await aptos.signAndSubmitTransaction({
 });
 ```
 
-Behind the scenes, the `transferCoinTransaction` function generates a transaction payload that can be simulated or submitted to chain:
+このは裏で、 `transferCoinTransaction` 関数は、チェーンにシミュレートまたは送信できるトランザクションペイロードを生成しています。
 
 ```ts
 export async function transferCoinTransaction(args: {
@@ -479,67 +479,67 @@ export async function transferCoinTransaction(args: {
 }
 ```
 
-Breaking the above down into pieces:
+上記の概要:
 
-1. `transfer_coins` internally is a `EntryFunction` in the [Aptos Account Move module](https://github.com/aptos-labs/aptos-core/blob/main/aptos-move/framework/aptos-framework/sources/aptos_account.move#L92), i.e. an entry function in Move that is directly callable.
-2. The Move function is stored on the aptos_account module: `0x1::aptos_account`.
-3. The `transfer_coins` functions uses the [Coin Move module](https://github.com/aptos-labs/aptos-core/blob/main/aptos-move/framework/aptos-framework/sources/coin.move)
-4. Because the Coin module can be used by other coins, the `transferCoinTransaction` must explicitly specify which coin type to transfer. If not specified with `coinType` it defaults to `0x1::aptos_coin::AptosCoin`.
+1. `transfer_coins` は内部的には [Aptos Account Move モジュール](https://github.com/aptos-labs/aptos-core/blob/main/aptos-move/framework/aptos-framework/sources/aptos_account.move#L92)の`EntryFunction` です。つまり、Moveのエントリ関数は直接呼び出せます。
+2. Move の関数は aptos_account モジュール: `0x1::aptos_account` に保存されてます。
+3. `transfer_coins` 関数は、[Coin Move module](https://github.com/aptos-labs/aptos-core/blob/main/aptos-move/framework/aptos-framework/sources/coin.move) を使用します。
+4. Coinモジュールは他のコインで使用できるため、`transferCoinTransaction` は転送するコインの種類を明示的に指定する必要があります。 `coinType` は指定されていない限りデフォルトでは `0x1::aptos_coin::AptosCoin` です。
 
   
   <TabItem value="python" label="Python">
-Like the previous step, this is another helper step that constructs a transaction transferring the coins from Alice to Bob. For correctly generated transactions, the API will return a transaction hash that can be used in the subsequent step to check on the transaction status. The Aptos blockchain does perform a handful of validation checks on submission; and if any of those fail, the user will instead be given an error. These validations use the transaction signature and unused sequence number, and submitting the transaction to the appropriate chain.
+前のステップと同様に、これはAliceからBobにコインを転送するトランザクションを構築するもう1つのヘルパーステップです。 正しく生成されたトランザクションの場合、API はトランザクションの状態を確認するために次のステップで使用できるトランザクションハッシュを返します。 Aptosブロックチェーンは、送信時に一握りの検証チェックを実行します。 それらのいずれかに失敗した場合、ユーザーにはエラーが返されます。 これらの検証は、トランザクション署名と未使用のシーケンス番号を使用し、適切なチェーンにトランザクションを送信します。
 
 ```python
 :!: static/sdks/python/examples/transfer_coin.py section_5
 ```
 
-Behind the scenes the Python SDK generates, signs, and submits a transaction:
+裏では、Python SDK がトランザクションを生成、署名、送信します。
 
 ```python
 :!: static/sdks/python/aptos_sdk/async_client.py bcs_transfer
 ```
 
-Breaking the above down into pieces:
+上記の概要:
 
-1. `transfer` internally is a `EntryFunction` in the [Coin Move module](https://github.com/aptos-labs/aptos-core/blob/main/aptos-move/framework/aptos-framework/sources/coin.move#L412), i.e. an entry function in Move that is directly callable.
-2. The Move function is stored on the coin module: `0x1::coin`.
-3. Because the Coin module can be used by other coins, the transfer must explicitly use a `TypeTag` to define which coin to transfer.
-4. The transaction arguments must be placed into `TransactionArgument`s with type specifiers (`Serializer.{type}`), that will serialize the value into the appropriate type at transaction generation time.
+1. `transfer` は内部的には [Coin Move モジュール](https://github.com/aptos-labs/aptos-core/blob/main/aptos-move/framework/aptos-framework/sources/coin.move#L412)の`EntryFunction` です。つまり、Moveのエントリ関数は直接呼び出せます。
+2. Move関数はコインモジュール`0x1::coin`に保存されます。
+3. Coinモジュールは他のコインで使用できるので、transfer には明示的にどのコインを転送するかを定義するために`TypeTag`を使用する必要があります。
+4. トランザクション引数は型指定子 (`Serializer.{type}`) を持つ `TransactionArgument`に配置する必要があり、これはトランザクション生成時に適切な型に値をシリアライズされます。
 
   
   <TabItem value="rust" label="Rust">
-Like the previous step, this is another helper step that constructs a transaction transferring the coins from Alice to Bob. For correctly generated transactions, the API will return a transaction hash that can be used in the subsequent step to check on the transaction status. The Aptos blockchain does perform a handful of validation checks on submission; and if any of those fail, the user will instead be given an error. These validations use the transaction signature and unused sequence number, and submitting the transaction to the appropriate chain.
+前のステップと同様に、これはAliceからBobにコインを転送するトランザクションを構築するもう1つのヘルパーステップです。 正しく生成されたトランザクションの場合、API はトランザクションの状態を確認するために次のステップで使用できるトランザクションハッシュを返します。 Aptosブロックチェーンは、送信時に一握りの検証チェックを実行します。 それらのいずれかに失敗した場合、ユーザーにはエラーが返されます。 これらの検証は、トランザクション署名と未使用のシーケンス番号を使用し、適切なチェーンにトランザクションを送信します。
 
 ```rust
 :!: static/sdks/rust/examples/transfer-coin.rs section_5
 ```
 
-Behind the scenes the Rust SDK generates, signs, and submits a transaction:
+裏では、Rust SDK がトランザクションを生成、署名、送信します。
 
 ```rust
 :!: static/sdks/rust/src/coin_client.rs section_1
 ```
 
-Breaking the above down into pieces:
+上記の概要:
 
-1. First, we fetch the chain ID, necessary for building the transaction payload.
-2. `transfer` internally is a `EntryFunction` in the [Coin Move module](https://github.com/aptos-labs/aptos-core/blob/main/aptos-move/framework/aptos-framework/sources/coin.move#L412), i.e. an entry function in Move that is directly callable.
-3. The Move function is stored on the coin module: `0x1::coin`.
-4. Because the Coin module can be used by other coins, the transfer must explicitly use a `TypeTag` to define which coin to transfer.
-5. The transaction arguments, such as `to_account` and `amount`, must be encoded as BCS to use with the `TransactionBuilder`.
+1. まず、トランザクションペイロードの構築に必要なチェーンIDを取得します。
+2. `transfer` は内部的には [Coin Move モジュール](https://github.com/aptos-labs/aptos-core/blob/main/aptos-move/framework/aptos-framework/sources/coin.move#L412)の`EntryFunction` です。つまり、Moveのエントリ関数は直接呼び出せます。
+3. Move関数はコインモジュール`0x1::coin`に保存されます。
+4. Coinモジュールは他のコインで使用できるので、transfer には明示的にどのコインを転送するかを定義するために`TypeTag`を使用する必要があります。
+5. `to_account` や `amount` のようなトランザクション引数は、 `TransactionBuilder` で使用するにはBCSとしてエンコードする必要があります。
 
   
 
 
 ***
 
-### Step 4.6: Waiting for transaction resolution
+### ステップ 4.6: トランザクションの解決を待つ
 
 <Tabs groupId="sdk-examples">
   <TabItem value="typescript" label="Typescript">
 
-In the TypeScript SDK, just calling `waitForTransaction` is sufficient to wait for the transaction to complete. The function will return the `Transaction` returned by the API once it is processed (either successfully or unsuccessfully) or throw an error if processing time exceeds the timeout.
+TypeScript SDKでは、`waitForTransaction`を呼び出すだけでトランザクションが完了するまで待つことができます。 この関数は、処理が完了したら (それが成功か失敗かによらず) APIから返される `Transaction` を返却、もしくは処理がタイムアウトとなった場合はエラーを返します。
 
 ```ts
 const response = await aptos.waitForTransaction({
@@ -550,7 +550,7 @@ const response = await aptos.waitForTransaction({
   
   <TabItem value="python" label="Python">
 
-The transaction hash can be used to query the status of a transaction:
+トランザクションハッシュはトランザクションの状態を問い合わせるために使用できます:
 
 ```python
 :!: static/sdks/python/examples/transfer_coin.py section_6
@@ -559,7 +559,7 @@ The transaction hash can be used to query the status of a transaction:
   
   <TabItem value="rust" label="Rust">
 
-The transaction hash can be used to query the status of a transaction:
+トランザクションハッシュはトランザクションの状態を問い合わせるために使用できます:
 
 ```rust
 :!: static/sdks/rust/examples/transfer-coin.rs section_6
@@ -568,7 +568,7 @@ The transaction hash can be used to query the status of a transaction:
   
 
 
-## Supporting documentation
+## 役に立つドキュメント
 
 - [Account basics](../concepts/accounts.md)
 - [TypeScript SDK](../sdks/ts-sdk/index.md)
